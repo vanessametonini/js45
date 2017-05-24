@@ -7,8 +7,13 @@
             <div class="form-group">
                 <label for="titulo">Título</label>
                 <input formControlName="titulo" required type="text" [(ngModel)]="foto.titulo" name="titulo" class="form-control" id="titulo">
-                <span *ngIf="meuForm.controls.titulo.invalid" class="form-control alert-danger">
-                    Título obrigatório
+                <span *ngIf="meuForm.controls.titulo.invalid">
+                    <span *ngIf="meuForm.controls.titulo.errors.required" class="form-control alert-danger">
+                        Título obrigatório
+                    </span>
+                    <span *ngIf="meuForm.controls.titulo.errors.minlength" class="form-control alert-danger">
+                        Tamanho minimo de 4 caracteres
+                    </span>
                 </span>
             </div>
 
@@ -29,7 +34,10 @@
             <button type="submit" class="btn btn-primary" [disabled]="meuForm.invalid">Salvar</button>
             <a [routerLink]="['']" class="btn btn-primary">Voltar</a>
         </div>
+        <div class="col-md-4">
+            <h2>{{foto.titulo}}</h2>
+            <img src="{{foto.url}}" alt="">
+        </div>
     </form>
-    <div class="col-md-4">
-    </div>
+    
 </div>
