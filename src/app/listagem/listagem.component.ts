@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http'
 import { FotoComponent } from '../foto/foto.component'
+import { FotoService} from '../foto/foto.service'
 
 @Component({
   selector: 'listagem',
@@ -13,19 +14,16 @@ export class ListagemComponent {
 
   fotos: FotoComponent[] = [];
 
-  constructor(http: Http){
-      http.get('http://localhost:3000/v1/fotos')
-          .map(
-            res => res.json()
-          )
-          .subscribe(
-            (fotos) => {
-              this.fotos = fotos
-            },
-            (erro) => {
-              console.log(erro)
-            }
-          )
+  service: FotoService
+
+  constructor(service: FotoService) {
+
+      this.service = service;
+
+      this.service.lista().subscribe(
+          fotos => this.fotos = fotos,
+          erro => console.log(erro)
+      )
   }
 
 }
