@@ -28,4 +28,8 @@ export class FotoService {
                 JSON.stringify(foto), 
                 { headers: this.headers})
     }
+
+    remove(foto: FotoComponent): Observable<Response> {
+        return this.http.delete(this.url+'/'+foto._id)
+    }
 }

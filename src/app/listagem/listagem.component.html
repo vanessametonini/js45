@@ -4,6 +4,8 @@
 
 <article class="container">
 
+  <p *ngIf="mensagem.length" class="alert alert-warning">{{mensagem}}</p>
+
   <section class="row">
     <div class="col-md12">
       <form action="">
@@ -23,7 +25,10 @@
 
   <section class="row">
       <painel *ngFor="let foto of fotos | filtroPorTitulo: textoProcurado.value" titulo="{{foto.titulo}}" class="col-md-2 efeito">
-        <foto class="efeito" url="{{foto.url}}" titulo="{{foto.titulo}}"></foto>
+        <a [routerLink]="['/cadastro',foto._id]">
+          <foto class="efeito" url="{{foto.url}}" titulo="{{foto.titulo}}"></foto>
+        </a>
+        <button (click)="remover(foto)" class="btn btn-danger btn-block">Remover</button>
       </painel>
   </section>
 
