@@ -30,11 +30,13 @@ export class CadastroComponent {
         params => {
           let id = params['id']
 
-          this.service.buscaPorId(id)
+          if(id){
+            this.service.buscaPorId(id)
                       .subscribe(
                           foto => this.foto = foto,
                           erro => console.log(erro)
                       )
+          }
         }
 
     )
@@ -53,10 +55,15 @@ export class CadastroComponent {
 
   cadastrar(){
 
-      this.service.cadastra(this.foto).subscribe(
-                      () => {
+      this.service.cadastra(this.foto)
+                  .subscribe(
+                      retorno => {
+
+                        this.mensagem = retorno.mensagem
+
                         this.foto = new FotoComponent;
-                        this.router.navigate(['']);
+
+                        if(!retorno.inclusao) this.router.navigate(['']);
                       },
                       erro => console.log(erro)
       )
