@@ -2,6 +2,7 @@
     <h1 class="text-center">Cadastrar fotos</h1>
 </div>
 <div class="container">
+    <p *ngIf="mensagem.length" class="alert alert-info">{{mensagem}}</p>
     <form class="row" (submit)="cadastrar()" [formGroup]="meuForm">
         <div class="col-md-6">
             <div class="form-group">
