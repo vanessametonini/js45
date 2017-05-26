@@ -32,7 +32,10 @@ export class ListagemComponent {
     console.log(foto.titulo);
     console.log(foto._id);
 
-    this.service.remove(foto)
+    
+
+
+        this.service.remove(foto)
                 .subscribe(
                   () => {
                       //cria um copia da atual lista de fotos
@@ -56,6 +59,7 @@ export class ListagemComponent {
                   }
 
                 );
-  }
+
+    }
 
 }

@@ -28,7 +28,8 @@
         <a [routerLink]="['/cadastro',foto._id]">
           <foto class="efeito" url="{{foto.url}}" titulo="{{foto.titulo}}"></foto>
         </a>
-        <button (click)="remover(foto)" class="btn btn-danger btn-block">Remover</button>
+        <botao confirmacao="true" (acao)="remover(foto)" nome="Remover" classes="btn-danger btn-block"></botao>
+        <!--<button (click)="remover(foto)" class="btn btn-danger btn-block">Remover</button>-->
       </painel>
   </section>
 
