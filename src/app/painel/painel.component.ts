@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, Input, OnInit, ElementRef } from '@angular/core'
+import * as $ from 'jquery';
 
 @Component({
     selector: 'painel',
@@ -7,8 +8,11 @@ import { Component, Input, OnInit } from '@angular/core'
 })
 export class PainelComponent implements OnInit {
     @Input() titulo
+    private elemento: ElementRef
 
-    constructor(){}
+    constructor(elemento: ElementRef){
+        this.elemento = elemento;
+    }
 
     ngOnInit() {
 
@@ -16,7 +20,10 @@ export class PainelComponent implements OnInit {
         (this.titulo.length > 7) //se o titulo for maior que 7
         ? this.titulo = `${this.titulo.substr(0,7)}...` //titulo vai ser cortado até 7 e adicionado ...
         : this.titulo // senao retorna o titulo
+    }
 
+    fadeOut(cb){
+        $(this.elemento.nativeElement).fadeOut(cb)
     }
 
 }

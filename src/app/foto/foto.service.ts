@@ -44,8 +44,11 @@ export class FotoService {
         }
     }
 
-    remove(foto: FotoComponent): Observable<Response> {
+    remove(foto: FotoComponent): Observable<MensagemCadastro> {
         return this.http.delete(this.url+'/'+foto._id)
+                        .map(
+                            () => new MensagemCadastro('Foto Removida com sucesso', false)
+                        )
     }
 
     buscaPorId(id: string): Observable<FotoComponent>{

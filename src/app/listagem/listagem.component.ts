@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Http } from '@angular/http'
 import { FotoComponent } from '../foto/foto.component'
 import { FotoService} from '../foto/foto.service'
+import { PainelComponent } from "../painel/painel.component";
 
 @Component({
   selector: 'listagem',
@@ -28,29 +29,34 @@ export class ListagemComponent {
       )
   }
 
-  remover(foto: FotoComponent){
-    console.log(foto.titulo);
-    console.log(foto._id);
-
-    
-
+  remover(foto: FotoComponent, painel: PainelComponent){
 
         this.service.remove(foto)
                 .subscribe(
-                  () => {
-                      //cria um copia da atual lista de fotos
-                      let novasFotos = this.fotos.slice(0)
+                  (resposta) => {
 
-                      //pega a posicao no array da foto que foi excluida
-                      let indice = novasFotos.indexOf(foto)
+                    painel.fadeOut(
 
-                      //remove o elemento do array com o indice informado, e quantidade de elementos a ser removidos
-                      novasFotos.splice(indice,1)
+                        () => {
 
-                      //atribui um novo valor para lista de fotos
-                      this.fotos = novasFotos
+                            //cria um copia da atual lista de fotos
+                            let novasFotos = this.fotos.slice(0)
 
-                      this.mensagem = "Foto removida com sucesso!"
+                            //pega a posicao no array da foto que foi excluida
+                            let indice = novasFotos.indexOf(foto)
+
+                            //remove o elemento do array com o indice informado, e quantidade de elementos a ser removidos
+                            novasFotos.splice(indice,1)
+
+                            //atribui um novo valor para lista de fotos
+                            this.fotos = novasFotos
+
+                            this.mensagem = resposta.mensagem
+
+                        }
+
+                    )
+
 
                   },
                   erro => {
