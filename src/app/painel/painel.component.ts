@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, Input, OnInit, ElementRef } from '@angular/core'
+import * as $ from 'jquery';
 
 @Component({
     selector: 'painel',
@@ -7,8 +8,15 @@ import { Component, Input, OnInit } from '@angular/core'
 })
 export class PainelComponent implements OnInit {
     @Input() titulo
+    element: ElementRef;
 
-    constructor(){}
+    constructor(elemento: ElementRef){
+        this.element = elemento
+    }
+
+    fadeOut(callback){
+        $(this.element.nativeElement).fadeOut(callback);
+    }
 
     ngOnInit() {
 

@@ -24,11 +24,11 @@
 <br>
 
   <section class="row">
-      <painel *ngFor="let foto of fotos | filtroPorTitulo: textoProcurado.value" titulo="{{foto.titulo}}" class="col-md-2 efeito">
+      <painel #painel *ngFor="let foto of fotos | filtroPorTitulo: textoProcurado.value" titulo="{{foto.titulo}}" class="col-md-2 efeito">
         <a [routerLink]="['/cadastro',foto._id]">
           <foto class="efeito" url="{{foto.url}}" titulo="{{foto.titulo}}"></foto>
         </a>
-        <botao confirmacao="true" (acao)="remover(foto)" nome="Remover" classes="btn-danger btn-block"></botao>
+        <botao confirmacao="true" (acao)="remover(foto, painel)" nome="Remover" classes="btn-danger btn-block"></botao>
         <!--<button (click)="remover(foto)" class="btn btn-danger btn-block">Remover</button>-->
       </painel>
   </section>

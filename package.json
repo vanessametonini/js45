@@ -24,6 +24,7 @@
     "core-js": "^2.4.1",
     "jquery": "^3.2.1",
     "rxjs": "^5.1.0",
+    "typings": "^2.1.1",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
@@ -31,7 +32,7 @@
     "@angular/compiler-cli": "^4.0.0",
     "@types/jasmine": "2.5.38",
     "@types/jquery": "^2.0.46",
-    "@types/node": "~6.0.60",
+    "@types/node": "^6.0.78",
     "codelyzer": "~2.0.0",
     "jasmine-core": "~2.5.2",
     "jasmine-spec-reporter": "~3.2.0",
