@@ -7,7 +7,7 @@ import { Injectable } from "@angular/core";
 export class FotoService {
 
     http: Http
-    url: string = 'http://localhost:3000/v1/fotos'
+    url: string = '//caelumpic-server.herokuapp.com/v1/fotos'
     headers: Headers;
 
     constructor(http: Http){
